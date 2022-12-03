@@ -41,19 +41,34 @@
 <script type="text/javascript">   
     var canvas = document.getElementById("myCanvas");
     var ctx = canvas.getContext("2d");
-     
+   
+    var flag1=1,flag2=1,flag3=1;
+
+    /*falg1=1~3 变量*/
     var x1=-50,y1=-173,len=200;
     var x2=50,y2=-68;
     var dx1=0,dy1=0.1;
     var dx2=0,dy2=0.1;
-    var flag1=1,flag2=1;
+    var str1="zzzzzzzz";
+
+    /*falg1=4~ 变量*/
+    var loca=[];
+    var x3=[];
+    var y3=[];
+    var num1=0,num2=0;
+    var i=0;
+    var dy3=10;
     
+
     ctx.fillStyle = '#FFFFFF';
     
         function draw()
         {   
             canvas.onmouseup=function(event){
-                flag1=2;
+                flag1++;
+            }
+            if(x1<-20&&y1<-20&&x2>canvas.width&&y2<-20&&flag1==2){
+                flag1=3;
             }
             if(flag1==1){
                 
@@ -81,8 +96,10 @@
                 ctx.fillStyle = 'rgba(150,40,40,0.3)';
                 ctx.arc(canvas.width/2+x2,canvas.height/2+y2,canvas.width/4,0,2*Math.PI);
                 ctx.fill();
+                ctx.font="40px Arial";
+                ctx.fillText("Happy birthday!",canvas.width/2+x1-100,canvas.height/2+y1);
 
-            }if(flag1==2){
+            }if(flag1>=2){
                 ctx.clearRect(0,0,canvas.width,canvas.height);
                 if(flag2==1){
                     dx1=(x1-canvas.width/2)/200;
@@ -101,13 +118,58 @@
                 x2+=dx2;y2+=dy2;
                 ctx.fillStyle = 'rgba(205,85,85,0.3)';
                 ctx.beginPath();
+                ctx.font="40px Arial";
+                ctx.fillText(str1,canvas.width/2-100,canvas.height/2-100);
                 ctx.arc(canvas.width/2+x1,canvas.height/2+y1,canvas.width/6,0,2*Math.PI);
                 /*ctx.fillRect(canvas.width/2+x1,canvas.height/2+y1,len,len); */
                 ctx.fill();
                 ctx.fillStyle = 'rgba(150,40,40,0.3)';
                 ctx.arc(canvas.width/2+x2,canvas.height/2+y2,canvas.width/4,0,2*Math.PI);
                 ctx.fill();
-            }                 
+                ctx.font="40px Arial";
+                ctx.fillText("Happy birthday!",canvas.width/2+x1-100,canvas.height/2+y1);
+            }   
+            if(flag1==3){
+                ctx.beginPath();
+                ctx.clearRect(0,0,canvas.width,canvas.height);
+                ctx.font="40px Arial";
+                ctx.fillText(str1,canvas.width/2-100,canvas.height/2-100);
+            }  
+            if(flag1>=4){
+                ctx.clearRect(0,0,canvas.width,canvas.height);
+                
+                if(flag3==1){
+                    
+                    for(i=0;i<=1000;i++){
+                    
+                        
+                        loca[i]=Math.random()*canvas.width;
+                    }
+                    
+                    flag3=2;
+                }
+                var sum=num1;
+                if(x3.length<400){
+                    for(;num1<=sum+5;num1++){
+                        x3[num1]=loca[num1];
+                        y3[num1]=-40;
+                    }
+                    
+                    
+                }
+                for(i=0;i<x3.length;i++){
+                        var re=dy3+Math.random()*i;
+                        if(re>=40)re=40;
+                        y3[i]+=re;
+                }
+                
+                for(i=0;i<x3.length;i++){
+                    ctx.fillStyle = 'rgba(150,40,40,0.2)';
+                    ctx.beginPath();
+                    ctx.arc(x3[i],y3[i],canvas.width/40,0,2*Math.PI);
+                    ctx.fill();
+                }
+            }            
         }
 
 
