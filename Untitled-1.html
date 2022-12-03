@@ -47,8 +47,8 @@
     /*falg1=1~3 变量*/
     var x1=-50,y1=-173,len=200;
     var x2=50,y2=-68;
-    var dx1=0,dy1=0.1;
-    var dx2=0,dy2=0.1;
+    var dx1=0,dy1=0.3;
+    var dx2=0,dy2=0.3;
     var str1="zzzzzzzz";
 
     /*falg1=4~ 变量*/
@@ -75,9 +75,9 @@
                 ctx.clearRect(0,0,canvas.width,canvas.height);
                 /*first circle location*/
                 if (x1>=(canvas.width-len)) {dx1=0;}
-                if (y1>(-163)) { dy1=-0.1;}
+                if (y1>(-163)) { dy1=-0.3;}
                 if (x1<=0) {dx1=0;}
-                if (y1<=-183) { dy1=0.1;}
+                if (y1<=-183) { dy1=0.3;}
                 x1+=dx1;y1+=dy1;
 
                 /*second circle location*/
@@ -158,8 +158,8 @@
                     
                 }
                 for(i=0;i<x3.length;i++){
-                        var re=dy3+Math.random()*i;
-                        if(re>=40)re=40;
+                        var re=dy3+Math.random()*i+Math.random()*10;
+                        if(re>=80)re=80;
                         y3[i]+=re;
                 }
                 
