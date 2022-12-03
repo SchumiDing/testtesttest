@@ -101,6 +101,7 @@
 
             }if(flag1>=2){
                 ctx.clearRect(0,0,canvas.width,canvas.height);
+                /*circles out*/
                 if(flag2==1){
                     dx1=(x1-canvas.width/2)/200;
                     dy1=(y1-canvas.height/2)/200;
@@ -137,36 +138,34 @@
             }  
             if(flag1>=4){
                 ctx.clearRect(0,0,canvas.width,canvas.height);
-                
+                /*create all the random x of balls*/
                 if(flag3==1){
                     
                     for(i=0;i<=1000;i++){
-                    
-                        
                         loca[i]=Math.random()*canvas.width;
                     }
                     
                     flag3=2;
                 }
                 var sum=num1;
-                if(x3.length<400){
-                    for(;num1<=sum+5;num1++){
+                /*create 15 balls every circulation until there are enough balls*/
+                if(x3.length<1000){
+                    for(;num1<=sum+20;num1++){
                         x3[num1]=loca[num1];
                         y3[num1]=-40;
                     }
-                    
-                    
                 }
+                /*caculate movement of balls*/
                 for(i=0;i<x3.length;i++){
                         var re=dy3+Math.random()*i+Math.random()*10;
-                        if(re>=80)re=80;
+                        if(re>=80)re=60+Math.random()*20;
                         y3[i]+=re;
                 }
-                
+                /*draw balls*/
                 for(i=0;i<x3.length;i++){
                     ctx.fillStyle = 'rgba(150,40,40,0.2)';
                     ctx.beginPath();
-                    ctx.arc(x3[i],y3[i],canvas.width/40,0,2*Math.PI);
+                    ctx.arc(x3[i],y3[i],canvas.width/20,0,2*Math.PI);
                     ctx.fill();
                 }
             }            
